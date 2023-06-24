@@ -1,12 +1,18 @@
-// Student Name: Joshua Patterson
-
 const express = require('express');
 const { getPokemonByType } = require('./lib/PokemonService');
 const pokemonService = require('./lib/PokemonService');
 let app = express();
+let handlebars = require('express-handlebars').create({
+	defaultLayout: 'main',
+	helpers: {
+	  getSpriteUrlByName: pokemonService.getSpriteUrlByName,
+	  getSpriteUrlById: pokemonService.getSpriteUrlById
+	}
+  });  
 
-let handlebars = require('express-handlebars')
-	.create({ defaultLayout:'main' });
+handlebars.handlebars.registerHelper('getSpriteUrlById', pokemonService.getSpriteUrlById);
+
+handlebars.handlebars.registerHelper('getSpriteUrlByName', pokemonService.getSpriteUrlByName);
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
