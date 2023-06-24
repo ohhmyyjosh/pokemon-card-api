@@ -1,0 +1,250 @@
+[
+  {
+    "id": 1,
+    "name": "Bulbasaur",
+    "type": ["grass", "poison"],
+    "hp": 45,
+    "willTrade": true,
+    "price": 5
+  },
+  {
+    "id": 6,
+    "name": "Charizard",
+    "type": ["fire"],
+    "hp": 78,
+    "willTrade": false,
+    "price": 35
+  },
+  {
+    "id": 25,
+    "name": "Pikachu",
+    "type": ["electric"],
+    "hp": 35,
+    "willTrade": true,
+    "price": 5
+  },
+  {
+    "id": 26,
+    "name": "Alolan Raichu",
+    "type": ["electric", "psychic"],
+    "hp": 60,
+    "willTrade": false,
+    "price": 25
+  },
+  {
+    "id": 136,
+    "name": "Flareon",
+    "type": ["fire"],
+    "hp": 65,
+    "willTrade": false,
+    "price": null
+  },
+  {
+    "id": 143,
+    "name": "Snorlax",
+    "type": ["normal"],
+    "hp": 160,
+    "willTrade": true,
+    "price": 5
+  },
+  {
+    "id": 150,
+    "name": "Mewtwo",
+    "type": ["psychic"],
+    "hp": 106,
+    "willTrade": false,
+    "price": 40
+  },
+  {
+    "id": 382,
+    "name": "Primal Kyogre",
+    "type": ["water"],
+    "hp": 100,
+    "willTrade": false,
+    "price": null
+  },
+  {
+    "id": 122,
+    "name": "Mr. Mime",
+    "type": ["psychic", "fairy"],
+    "hp": 40,
+    "willTrade": true,
+    "price": 2
+  },
+  {
+    "id": 146,
+    "name": "Moltres",
+    "type": ["fire", "flying"],
+    "hp": 90,
+    "willTrade": false,
+    "price": null
+  },
+  {
+    "id": 7,
+    "name": "Squirtle",
+    "type": ["water"],
+    "hp": 44,
+    "willTrade": true,
+    "price": 4
+  },
+  {
+    "id": 9,
+    "name": "Blastoise",
+    "type": ["water"],
+    "hp": 79,
+    "willTrade": false,
+    "price": 30
+  },
+  {
+    "id": 4,
+    "name": "Charmander",
+    "type": ["fire"],
+    "hp": 39,
+    "willTrade": true,
+    "price": 3
+  },
+  {
+    "id": 94,
+    "name": "Gengar",
+    "type": ["ghost", "poison"],
+    "hp": 60,
+    "willTrade": true,
+    "price": 15
+  },
+  {
+    "id": 143,
+    "name": "Snorlax",
+    "type": ["normal"],
+    "hp": 160,
+    "willTrade": true,
+    "price": 8
+  },
+  {
+    "id": 92,
+    "name": "Gastly",
+    "type": ["ghost", "poison"],
+    "hp": 30,
+    "willTrade": false,
+    "price": 2
+  },
+  {
+    "id": 143,
+    "name": "Snorlax",
+    "type": ["normal"],
+    "hp": 160,
+    "willTrade": false,
+    "price": null
+  },
+  {
+    "id": 129,
+    "name": "Magikarp",
+    "type": ["water"],
+    "hp": 20,
+    "willTrade": true,
+    "price": 1
+  },
+  {
+    "id": 130,
+    "name": "Gyarados",
+    "type": ["water", "flying"],
+    "hp": 95,
+    "willTrade": false,
+    "price": 20
+  },
+  {
+    "id": 131,
+    "name": "Lapras",
+    "type": ["water", "ice"],
+    "hp": 130,
+    "willTrade": true,
+    "price": 12
+  },
+  {
+    "id": 133,
+    "name": "Eevee",
+    "type": ["normal"],
+    "hp": 55,
+    "willTrade": false,
+    "price": null
+  },
+  {
+    "id": 134,
+    "name": "Vaporeon",
+    "type": ["water"],
+    "hp": 130,
+    "willTrade": true,
+    "price": 10
+  },
+  {
+    "id": 135,
+    "name": "Jolteon",
+    "type": ["electric"],
+    "hp": 65,
+    "willTrade": false,
+    "price": 8
+  },
+  {
+    "id": 136,
+    "name": "Flareon",
+    "type": ["fire"],
+    "hp": 65,
+    "willTrade": true,
+    "price": 6
+  },
+  {
+    "id": 143,
+    "name": "Snorlax",
+    "type": ["normal"],
+    "hp": 160,
+    "willTrade": true,
+    "price": 7
+  },
+  {
+    "id": 143,
+    "name": "Snorlax",
+    "type": ["normal"],
+    "hp": 160,
+    "willTrade": false,
+    "price": null
+  },
+  {
+    "id": 143,
+    "name": "Snorlax",
+    "type": ["normal"],
+    "hp": 160,
+    "willTrade": true,
+    "price": 5
+  },
+  {
+    "id": 144,
+    "name": "Articuno",
+    "type": ["ice", "flying"],
+    "hp": 90,
+    "willTrade": false,
+    "price": 15
+  },
+  {
+    "id": 145,
+    "name": "Zapdos",
+    "type": ["electric", "flying"],
+    "hp": 90,
+    "willTrade": true,
+    "price": 16
+  },
+  {
+    "id": 146,
+    "name": "Moltres",
+    "type": ["fire", "flying"],
+    "hp": 90,
+    "willTrade": false,
+    "price": null
+  },
+  {
+    "id": 150,
+    "name": "Mewtwo",
+    "type": ["psychic"],
+    "hp": 106,
+    "willTrade": true,
+    "price": 30
+  }
+]
