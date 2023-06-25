@@ -22,7 +22,7 @@
     </form>
     <h2>Your Collection:</h2>
     <div class="row">
-        {{#each pokemon}}
+        {{#each cards}}
         <div class="column"> 
             <div class="card">
                 <h2>
@@ -34,7 +34,7 @@
                         <h3>ID: {{id}} </h3>
                     </li>
                     <li>
-                        <h3>Type(s): {{#each type}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}</h3>
+                        <h3>Type(s): {{type}}</h3>
 
                     </li>
                     <li>

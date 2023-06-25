@@ -46,13 +46,20 @@ router.post('/logout', function(req, res){
     });
 });
 
-router.get('/', function(req, res) {
-	if(req.isAuthenticated()){
-	  res.render('home', { currentUser: req.user.toObject(), cards: req.user.pokemonCollection });
-	} else {
-	  res.render('home', { currentUser: null });
-	}
+router.get('/', async function(req, res) {
+    if(req.isAuthenticated()){
+        try {
+            const user = await User.findOne({ username: req.user.username }).lean();
+            res.render('home', { currentUser: user, cards: user.pokemonCollection });
+        } catch (err) {
+            console.log(err);
+            return res.render('home', { currentUser: null });
+        }
+    } else {
+        res.render('home', { currentUser: null });
+    }
 });
+
 
 router.get('/api/cards', function (req, res) {
 	res.json(req.user.pokemonCollection);
