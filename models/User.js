@@ -12,7 +12,7 @@ const UserSchema = new Schema({
     hp: Number,
     willTrade: Boolean,
     price: Number
-  }]
+  }],
 });
 
 UserSchema.plugin(passportLocalMongoose, { usernameField: 'username' });
