@@ -10,6 +10,17 @@
         </div>
     {{/if}}
     <center>
+        <nav class="navbar">
+            <a href="/">Home</a>
+            {{#if currentUser}}
+                <a href="/my-collection">My Collection</a>
+            {{/if}}
+            <a href="/all-cards">All Cards</a>
+            <form action="/user-cards" method="GET">
+                <input type="text" name="user" placeholder="Username">
+                <button type="submit">View User's Cards</button>
+            </form>
+        </nav>
         <a href="/">
             <img src="/images/pokemonLogo.png" width="600" height="221">
         </a>

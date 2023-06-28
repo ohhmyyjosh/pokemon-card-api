@@ -1,49 +1,62 @@
 {{#if currentUser}}
-    <h2 class="collection-bar">{{currentUser.username}}'s Collection:</h2>
+    {{#if showCollectionHeading}}
+        <h2 class="collection-bar">{{currentUser.username}}'s Collection:</h2>
+    {{/if}}
     <form action="/" method="GET" style="padding: 10px;">
         <input type="text" name="search" placeholder="Search by type, name, or ID..." style="width: 300px;">
         <button type="submit">Search</button>
     </form>
-    <div class="row">
-        {{#each cards}}
-        <div class="column">
-            <div class="card">
-                <div class="card-header">
-                    <span class="card-name">{{name}}</span>
-                    <span class="card-hp">HP: {{hp}}</span>
-                </div>
-                <img class="pokemon-image" src="{{getSpriteUrlById id}}" alt="{{name}}">
-                <ul>
-                    <li>
-                        <h3>ID: {{id}} </h3>
-                    </li>
-                    <li>
-                        {{#each type}}
-                        <span class="pokemon-type {{this}}">{{this}}</span>
-                        {{/each}}
-                    </li>
-                    {{#if willTrade}}
-                        <li>
-                            <h3 class="trade-available">Available for Trade</h3>
-                        </li>
-                    {{else}}
-                        <li>
-                            <h3 class="trade-not-available">Not Available for Trade</h3>
-                        </li>
-                    {{/if}}
-                    {{#if price}}
-                        <li>
-                            <h3>Price: ${{price}}.00</h3>
-                        </li>
-                    {{else}}
-                        <li>
-                            <h3>Not for Sale</h3>
-                        </li>
-                    {{/if}}
-                </ul>
+{{else}}
+    <p>
+        You need to <a href="/signup">sign up</a> or <a href="/login">log in</a> to view the Pokémon cards.
+    </p>
+{{/if}}
+
+<div class="row">
+    {{#each cards}}
+    <div class="column">
+        <div class="card">
+            <div class="card-header">
+                <span class="card-name">{{name}}</span>
+                <span class="card-hp">HP: {{hp}}</span>
             </div>
+            <img class="pokemon-image" src="{{getSpriteUrlById id}}" alt="{{name}}">
+            <ul>
+                <li>
+                    <h3>ID: {{id}} </h3>
+                </li>
+                <li>
+                    {{#each type}}
+                    <span class="pokemon-type {{this}}">{{this}}</span>
+                    {{/each}}
+                </li>
+                {{#if willTrade}}
+                    <li> 
+                        <h3 class="trade-available">Available for Trade</h3>
+                    </li>
+                {{else}}
+                    <li>
+                        <h3 class="trade-not-available">Not Available for Trade</h3>
+                    </li>
+                {{/if}}
+                {{#if price}}
+                    <li>
+                        <h3>Price: ${{price}}.00</h3>
+                    </li>
+                {{else}}
+                    <li>
+                        <h3>Not for Sale</h3>
+                    </li>
+                {{/if}}
+            </ul>
         </div>
-        {{/each}}
+            <div class="card-owner">
+            <h3>Owner: {{owner}}</h3>
+        </div>
+    </div>
+
+    {{/each}}
+    {{#if currentUser}}
         <div class="column">
             <div class="card add-card" onclick="showForm()">
                 <h3>Add a new card</h3>
@@ -58,15 +71,5 @@
                 </form>
             </div>
         </div>
-    </div>
-
-{{else}}
-    <p>
-        You need to <a href="/signup">sign up</a> or <a href="/login">log in</a> to view the Pokémon cards.
-    </p>
-{{/if}}
-<script>
-    function showForm() {
-        document.getElementById('new-card-form').style.display = 'block';
-    }
-</script>
+    {{/if}}
+</div>
