@@ -1,8 +1,30 @@
 <!doctype html>
 <html>
 <head>
-    <title>Pokemon Card Trading API</title>
+    {{#if currentUser}}
+        <div class="user-info">
+            <h2>Welcome, {{currentUser.username}}!</h2>
+            <form action="/logout" method="POST">
+                <button type="submit">Logout</button>
+            </form>
+        </div>
+    {{/if}}
+    <center>
+        <a href="/">
+            <img src="/images/pokemonLogo.png" width="600" height="221">
+        </a>
+        <h1 style="padding: 10px 20px;">
+            Pokémon Card Trading API
+        </h1>
+    </center>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        
+        body {
+            font-family: 'Press Start 2P', sans-serif;
+            font-size: 11px;
+        }
+
         a {
             text-decoration: none;
         }
@@ -12,39 +34,39 @@
         }
 
         h1 {
-            color: #2a75bb;
-            background-color: #c7a008;
+            color: #ffffff;
+            background-color: #2a75bb;
+        }
+
+        .collection-bar {
+            color: #ffffff;
+            background-color: #2a75bb;
+            padding: 10px 20px;
         }
 
         h2 {
-            color:#2a75bb;
-            background-color: #c7a008;
-        }
-
-        h3, p{
-            color: #3c5aa6;
-        }
-
-        .column {
-            float: left;
-            width: 20%;
-            padding: 0 10px;
+            color: #2a75bb;
         }
 
         .row {
-            margin: 0 -5px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .column {
+            width: 20%;
+            padding: 0 10px;
+            box-sizing: border-box;
+            text-align: left;
+            margin-bottom: 20px;
         }
 
         .row:after {
             content: "";
             display: table;
             clear: both;
-        }
-
-        .card {
-            background: white;
-            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-            min-height: 650px;
         }
 
         .pokemon-image {
@@ -59,6 +81,191 @@
 
         .user-info h3 {
             margin-right: 10px;
+        }
+
+        .card {
+            background-color: #f5f5f5;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h2 {
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .card img.pokemon-image {
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .card ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .card ul li {
+            margin-bottom: 10px;
+        }
+
+        .card ul li h3 {
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2a75bb;
+            color: white;
+            padding: 10px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .card-header .card-name {
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .card-header .card-hp {
+            font-size: 12px;
+        }
+
+        .card .pokemon-type {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-right: 6px;
+            color: white;
+        }
+
+        /* Type color classes */
+        .card .pokemon-type.water {
+            background-color: #6493eb;
+        }
+
+        .card .pokemon-type.fire {
+            background-color: #f08030;
+        }
+
+        .card .pokemon-type.grass {
+            background-color: #7ac74c;
+        }
+
+        .card .pokemon-type.electric {
+            background-color: #f8d030;
+            color: black;
+        }
+
+        .card .pokemon-type.psychic {
+            background-color: #f85888;
+        }
+
+        .card .pokemon-type.fighting {
+            background-color: #c03028;
+        }
+
+        .card .pokemon-type.normal {
+            background-color: #a8a878;
+        }
+
+        .card .pokemon-type.flying {
+            background-color: #a890f0;
+        }
+
+        .card .pokemon-type.poison {
+            background-color: #a040a0;
+        }
+
+        .card .pokemon-type.ground {
+            background-color: #e0c068;
+            color: black;
+        }
+
+        .card .pokemon-type.rock {
+            background-color: #b8a038;
+        }
+
+        .card .pokemon-type.ice {
+            background-color: #98d8d8;
+            color: black;
+        }
+
+        .card .pokemon-type.bug {
+            background-color: #a8b820;
+        }
+
+        .card .pokemon-type.dragon {
+            background-color: #7038f8;
+        }
+
+        .card .pokemon-type.ghost {
+            background-color: #705898;
+        }
+
+        .card .pokemon-type.dark {
+            background-color: #705848;
+        }
+
+        .card .pokemon-type.steel {
+            background-color: #b8b8d0;
+            color: black;
+        }
+
+        .card .pokemon-type.fairy {
+            background-color: #f0b6bc;
+        }
+
+        .card .pokemon-type.legendary {
+            background-color: #f8e133;
+        }
+
+        .card .pokemon-type.mythical {
+            background-color: #b243ce;
+        }
+
+        .card .trade-available {
+            font-size: 14px;
+            font-weight: bold;
+            color: green;
+        }
+
+        .card .trade-not-available {
+            font-size: 14px;
+            font-weight: bold;
+            color: red;
+        }
+
+        .search-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #f5f5f5;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-button:hover {
+            background-color: #e0e0e0;
         }
 
 

@@ -19,6 +19,10 @@ passport.use(new LocalStrategy({ usernameField: 'username' }, User.authenticate(
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+app.use(express.json());
+
+app.use(express.urlencoded({ extended: true }));
+
 app.use(session({
     secret: cookieSecret,
     resave: false,

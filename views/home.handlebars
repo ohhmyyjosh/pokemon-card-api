@@ -1,86 +1,68 @@
-<center>
-    <a href="/">
-        <img src="/images/pokemonLogo.png" width="600" height="221">
-    </a>
-    <h1>
-        Pokemon Card Trading API
-    </h1>
-    {{#if currentUser}}
-        
-    {{/if}}
-</center>
 {{#if currentUser}}
-    <div class="user-info">
-        <h3>Welcome, {{currentUser.username}}!</h3>
-        <form action="/logout" method="POST">
-            <button type="submit">Logout</button>
-        </form>
-    </div>
-    <form action="/" method="GET">
-        <input type="text" name="type" placeholder="Search by type...">
+    <h2 class="collection-bar">{{currentUser.username}}'s Collection:</h2>
+    <form action="/" method="GET" style="padding: 10px;">
+        <input type="text" name="search" placeholder="Search by type, name, or ID..." style="width: 300px;">
         <button type="submit">Search</button>
     </form>
-    <h2>Your Collection:</h2>
     <div class="row">
         {{#each cards}}
-        <div class="column"> 
+        <div class="column">
             <div class="card">
-                <h2>
-                    {{name}}
-                </h2>
+                <div class="card-header">
+                    <span class="card-name">{{name}}</span>
+                    <span class="card-hp">HP: {{hp}}</span>
+                </div>
                 <img class="pokemon-image" src="{{getSpriteUrlById id}}" alt="{{name}}">
                 <ul>
                     <li>
                         <h3>ID: {{id}} </h3>
                     </li>
                     <li>
-                        <h3>Type(s): {{type}}</h3>
-
-                    </li>
-                    <li>
-                        <h3>HP: {{hp}} </h3>
+                        {{#each type}}
+                        <span class="pokemon-type {{this}}">{{this}}</span>
+                        {{/each}}
                     </li>
                     {{#if willTrade}}
                         <li>
-                            <h3>Available for Trade</h3>
+                            <h3 class="trade-available">Available for Trade</h3>
                         </li>
-                        {{else}}
+                    {{else}}
                         <li>
-                            <h3>Not Available for Trade</h3>
+                            <h3 class="trade-not-available">Not Available for Trade</h3>
                         </li>
                     {{/if}}
-                        
                     {{#if price}}
                         <li>
                             <h3>Price: ${{price}}.00</h3>
                         </li>
-                        {{else}}
+                    {{else}}
                         <li>
                             <h3>Not for Sale</h3>
                         </li>
                     {{/if}}
                 </ul>
             </div>
-        </div>     
+        </div>
         {{/each}}
-    </div>
-    <div class="column"> 
-        <div class="card add-card" onclick="showForm()">
-            <h3>Add a new card</h3>
-            <form id="new-card-form" style="display: none;">
-                <input type="number" name="id" placeholder="Pokemon ID" required>
-                <input type="text" name="name" placeholder="Pokemon Name" required>
-                <input type="text" name="types" placeholder="Pokemon Type(s)" required>
-                <input type="number" name="hp" placeholder="Pokemon HP" required>
-                <input type="text" name="willTrade" placeholder="Card Available for Trade" required>
-                <input type="text" name="price" placeholder="Card Price" required>
-                <button type="submit">Add Card</button>
-            </form>
+        <div class="column">
+            <div class="card add-card" onclick="showForm()">
+                <h3>Add a new card</h3>
+                <form id="new-card-form" style="display: none;" action="/new-card" method="POST">
+                    <input type="number" name="id" placeholder="Pokemon ID" required>
+                    <input type="text" name="name" placeholder="Pokemon Name" required>
+                    <input type="text" name="types" placeholder="Pokemon Type(s)" required>
+                    <input type="number" name="hp" placeholder="Pokemon HP" required>
+                    <input type="text" name="willTrade" placeholder="Card Available for Trade" required>
+                    <input type="text" name="price" placeholder="Card Price" required>
+                    <button type="submit">Add Card</button>
+                </form>
+            </div>
         </div>
     </div>
+
 {{else}}
     <p>
-        You need to <a href="/signup">sign up</a> or <a href="/login">log in</a> to view the Pokemon cards.
+        You need to <a href="/signup">sign up</a> or <a href="/login">log in</a> to view the Pokémon cards.
     </p>
 {{/if}}
 <script>
@@ -88,9 +70,3 @@
         document.getElementById('new-card-form').style.display = 'block';
     }
 </script>
-
-
-
-
-
-
